@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const categoryController = require("../controllers/category");
 const upload = require("../middleware/uploadImages");
+const checkUsertoken = require("../middleware/checkUserToken");
 
 function categoryRouter(io) {
   function ioMiddleware(req, res, next) {
@@ -14,10 +15,26 @@ function categoryRouter(io) {
     });
   });
 
-  router.post("/add-category", categoryController.addCategory);
-  router.get("/get-category/:id", categoryController.getCategoryById);
-  router.put("/update-category/:id", categoryController.updateCategory);
-  router.delete("/delete-category/:id", categoryController.deletCategory);
+  router.post(
+    "/add-category",
+    checkUsertoken(),
+    categoryController.addCategory
+  );
+  router.get(
+    "/get-category/:id",
+    checkUsertoken(),
+    categoryController.getCategoryById
+  );
+  router.put(
+    "/update-category/:id",
+    checkUsertoken(),
+    categoryController.updateCategory
+  );
+  router.delete(
+    "/delete-category/:id",
+    checkUsertoken(),
+    categoryController.deletCategory
+  );
   return router;
 }
 
