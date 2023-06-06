@@ -1,5 +1,5 @@
 const jwt = require("jsonwebtoken");
-const Auth = require("../models/auth");
+const Auth = require("../models/user");
 module.exports = async (req, res, next) => {
   try {
     //check here for admin

@@ -15,20 +15,10 @@ function carRouter(io) {
     });
   });
 
-  router.post(
-    "/add-car",
-    checkUsertoken(),
-    upload.single("file"),
-    carController.addCar
-  );
-  router.get("/get-car/:id", checkUsertoken(), carController.getCarById);
-  router.put(
-    "/update-car/:id",
-    checkUsertoken(),
-    upload.single("file"),
-    carController.updateCar
-  );
-  router.delete("/delete-car/:id", checkUsertoken(), carController.deletCar);
+  router.post("/add-car", upload.single("file"), carController.addCar);
+  router.get("/get-car/:id", carController.getCarById);
+  router.put("/update-car/:id", upload.single("file"), carController.updateCar);
+  router.delete("/delete-car/:id", carController.deletCar);
 
   return router;
 }

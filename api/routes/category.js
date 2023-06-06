@@ -15,26 +15,10 @@ function categoryRouter(io) {
     });
   });
 
-  router.post(
-    "/add-category",
-    checkUsertoken(),
-    categoryController.addCategory
-  );
-  router.get(
-    "/get-category/:id",
-    checkUsertoken(),
-    categoryController.getCategoryById
-  );
-  router.put(
-    "/update-category/:id",
-    checkUsertoken(),
-    categoryController.updateCategory
-  );
-  router.delete(
-    "/delete-category/:id",
-    checkUsertoken(),
-    categoryController.deletCategory
-  );
+  router.post("/add-category", categoryController.addCategory);
+  router.get("/get-category/:id", categoryController.getCategoryById);
+  router.put("/update-category/:id", categoryController.updateCategory);
+  router.delete("/delete-category/:id", categoryController.deletCategory);
   return router;
 }
 

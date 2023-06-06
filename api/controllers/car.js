@@ -72,8 +72,8 @@ exports.updateCar = async (req, res) => {
 };
 exports.deletCar = async (req, res) => {
   try {
+    console.log("comsat===", req.params.id);
     let data = await carSchema.findOneAndDelete({ _id: req.params.id });
-
     if (data) {
       res.status(200).json({
         message: "This car has been delete",

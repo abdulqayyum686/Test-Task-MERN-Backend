@@ -5,10 +5,10 @@ module.exports.addCategory = async (req, res) => {
   const { title, belongsTo } = req.body;
 
   try {
-    const found_category = categorySchema.findOne({
+    const found_category = await categorySchema.findOne({
       title,
-      belongsTo,
     });
+    console.log("lali", found_category);
     if (found_category) {
       res.status(500).json({ message: "Category alredy exist" });
     } else {

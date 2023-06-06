@@ -11,7 +11,7 @@ const carSchema = mongoose.Schema({
   },
   file: {
     type: String,
-    required: true,
+    // required: true,
   },
   milage: {
     type: String,
